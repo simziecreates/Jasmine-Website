@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>That Canva Girl — Jasmine Gathoga</title>
+<meta name="description" content="LinkedIn brand strategy and design for consultants and service providers. Strategy and visuals, together.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Orange from the brand palette, on warm neutrals */
+    --orange: #FA510E;
+    --amber:  #F48600;
+    /* Warm neutrals */
+    --cream:  #F8EEE8;
+    --paper:  #FFF8F3;
+    --peach:  #F9DCCC;
+    --ink:    #231F1C;
+    --muted:  #6E625A;
+    --line:   rgba(35, 31, 28, .14);
+
+    --display: "Bricolage Grotesque", "Arial Narrow", sans-serif;
+    --body: "Figtree", system-ui, sans-serif;
+    --gutter: clamp(16px, 4vw, 48px);
+    --section: clamp(88px, 11vw, 160px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--body); background: var(--cream); color: var(--ink); line-height: 1.55; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+
+  /* Chunky retro condensed caps: the voice of the page */
+  .display { font-family: var(--display); font-variation-settings: "wdth" 75, "opsz" 96; font-weight: 800; text-transform: uppercase; line-height: .86; letter-spacing: -.01em; }
+  .wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 var(--gutter); }
+  .section { padding: var(--section) 0; }
+  .label { display: block; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  .h2 { font-size: clamp(52px, 9vw, 128px); }
+  .center { text-align: center; }
+
+  /* Pills: black tags, cream nav buttons, the talk button with an orange arrow dot */
+  .tag { display: inline-block; background: var(--ink); color: var(--paper); font-size: clamp(12px, 1.2vw, 15px); font-weight: 600; padding: .45em 1em; border-radius: 999px; white-space: nowrap; }
+  .tag.orange { background: var(--orange); color: var(--paper); }
+  .navpill { display: inline-flex; align-items: center; background: var(--paper); border-radius: 999px; padding: .6em 1.2em; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, color .2s; }
+  .navpill:hover { background: var(--ink); color: var(--paper); }
+  .talk { display: inline-flex; align-items: center; gap: 14px; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 6px 6px 6px 18px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .talk i { width: 32px; height: 32px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; font-style: normal; transition: transform .25s; }
+  .talk:hover i { transform: rotate(45deg); }
+  .talk.big { font-size: 17px; padding: 8px 8px 8px 24px; }
+  .talk.big i { width: 44px; height: 44px; }
+
+  /* ================= HEADER ================= */
+  header.top { position: fixed; z-index: 50; top: 0; left: 0; right: 0; padding: 16px var(--gutter); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; pointer-events: none; }
+  header.top > * { pointer-events: auto; }
+  /* once the page moves, the header gets a frosted cream backing so it never collides with headings */
+  header.top { transition: background .3s, backdrop-filter .3s; }
+  header.top.scrolled { background: rgba(248, 238, 232, .86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); pointer-events: auto; }
+  .top-left { display: flex; gap: 8px; }
+  .logo { font-family: var(--display); font-variation-settings: "wdth" 75; font-weight: 800; font-size: 24px; text-transform: uppercase; color: var(--orange); text-decoration: none; letter-spacing: .01em; }
+  .top-right { display: flex; justify-content: flex-end; align-items: center; gap: 20px; }
+  .hours { font-size: 12px; line-height: 1.3; font-weight: 600; }
+
+  /* ================= HERO ================= */
+  .hero { position: relative; isolation: isolate; overflow: hidden; background: var(--peach); padding-top: 96px; }
+  /* big hand-drawn loops in the margins */
+  .loop { position: absolute; z-index: -1; width: clamp(180px, 26vw, 380px); pointer-events: none; }
+  .loop path { fill: none; stroke: var(--orange); stroke-width: 14; stroke-linecap: round; }
+  .loop.l { left: calc(clamp(180px, 26vw, 380px) * -.42); top: 22%; }
+  .loop.r { right: calc(clamp(180px, 26vw, 380px) * -.38); top: 8%; transform: scaleX(-1) rotate(-12deg); }
+
+  .hero-head { position: relative; text-align: center; padding-top: clamp(16px, 3vw, 40px); }
+  .hero h1 { color: var(--orange); font-size: min(12.4vw, 190px); }
+  .hero h1 span { display: block; }
+  .hero .tag { position: absolute; z-index: 2; }
+  .hero .t1 { left: 22%; top: 14%; transform: rotate(-4deg); }
+  .hero .t2 { left: 9%; top: 47%; transform: rotate(3deg); }
+  .hero .t3 { right: 3%; top: 90%; transform: rotate(-3deg); }
+
+  .hero-body { position: relative; display: grid; grid-template-columns: 1fr minmax(260px, 420px) 1fr; align-items: end; gap: 24px; margin-top: clamp(8px, 2vw, 24px); }
+  .hero-video { grid-column: 2; }
+  .hero-right { grid-column: 3; }
+  .hero-right { padding-bottom: clamp(140px, 14vw, 200px); display: flex; flex-direction: column; align-items: flex-end; gap: 14px; text-align: right; }
+  .hero-right small { font-size: 13px; color: var(--muted); max-width: 22ch; }
+  /* hero video sits in the middle column */
+  .hero-video { display: block; width: 100%; height: auto; }
+  .hero-video[hidden] { display: none; }
+
+  /* curved ticker band */
+  .ticker { position: relative; z-index: 3; display: block; width: 100%; height: clamp(110px, 14vw, 210px); margin-top: calc(clamp(110px, 14vw, 210px) * -.72); }
+  .ticker .band { fill: none; stroke: var(--orange); stroke-width: 78; }
+  .ticker text { font-family: var(--display); font-variation-settings: "wdth" 75; font-weight: 800; font-size: 44px; text-transform: uppercase; fill: var(--paper); letter-spacing: .02em; }
+
+  /* ================= STATEMENT (fills in as you scroll) ================= */
+  .statement { position: relative; }
+  .statement .label { margin-bottom: 36px; }
+  .statement p { font-family: var(--display); font-variation-settings: "wdth" 85, "opsz" 48; font-weight: 700; font-size: clamp(30px, 4.4vw, 64px); line-height: 1.08; letter-spacing: -.015em; max-width: 22ch; margin: 0 auto; }
+  .statement .w { color: rgba(250, 81, 14, .35); transition: color .25s; }
+  .statement .w.on { color: var(--ink); }
+  .statement .w.hot.on { color: var(--orange); }
+  .statement .tag { position: absolute; transform: rotate(-6deg); }
+  .statement .s1 { left: 8%; top: 22%; }
+  .statement .s2 { right: 12%; bottom: 22%; transform: rotate(5deg); }
+
+  /* ================= WORK (curved row) ================= */
+  .work-head { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 16px; }
+  .work-head .h2 { font-size: clamp(44px, 7vw, 104px); text-align: center; }
+  .work-head .seeall { justify-self: end; }
+  /* the row streams round the inside of a cylinder; cq units size every tile off this box */
+  .curve { position: relative; overflow: hidden; container-type: size; height: clamp(320px, 52vw, 640px); margin-top: clamp(24px, 4vw, 56px); }
+  .curve-band { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .5s; }
+  .curve-band.ready { opacity: 1; }
+  .curve-tile { position: absolute; transform-style: preserve-3d; }
+  .curve-slice { position: absolute; top: 0; overflow: hidden; background: var(--paper); }
+  .curve-slice.first { border-radius: 12px 0 0 12px; }
+  .curve-slice.last { border-radius: 0 12px 12px 0; }
+  .curve-slice img { position: absolute; top: 0; max-width: none; object-fit: cover; object-position: 50% 0%; }
+  @media (prefers-reduced-motion: reduce) { .curve-tile { animation-play-state: paused !important; } }
+
+  /* ================= SERVICES ================= */
+  .services-head { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 16px; margin-bottom: clamp(48px, 6vw, 80px); }
+  .services-head .h2 { text-align: center; }
+  /* Scroll-drawn route: one line winds through the services and draws itself as you scroll.
+     Desktop and phone each get their own route; blocks sit on the route via --x/--y (percent of the stage). */
+  .flow { position: relative; width: 100%; aspect-ratio: 1600 / 2250; overflow-x: clip; }
+  .flow svg.route { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .flow .route-m { display: none; }
+  .route path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .route .ghost { stroke: rgba(250, 81, 14, .2); stroke-width: 18; }
+  .route .ink { stroke: var(--orange); stroke-width: 18; }
+  .route .cap { fill: var(--orange); stroke: var(--ink); stroke-width: 3; }
+  .route .nib { fill: var(--paper); stroke: var(--ink); stroke-width: 3; }
+
+  .svc { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; }
+  /* title is split around the sticker; the sticker sits exactly on the route */
+  .svc h3 { position: absolute; left: 0; top: 0; translate: -50% -50%; width: min(1100px, 92vw); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(14px, 2vw, 28px); color: var(--orange); font-size: clamp(40px, 5.4vw, 84px); }
+  .svc h3 span:first-child { justify-self: end; }
+  .svc h3 span:last-child { justify-self: start; }
+  /* hand-drawn doodle stickers: orange shapes, ink outlines, little spark ticks that pop when the line arrives */
+  .sticker { width: clamp(68px, 6.6vw, 100px); height: clamp(68px, 6.6vw, 100px); background: radial-gradient(circle, var(--cream) 50%, transparent 52%); display: grid; place-items: center; rotate: -8deg; scale: .55; opacity: .45; transition: scale .5s cubic-bezier(.3, 1.6, .5, 1), opacity .3s; }
+  .sticker svg { width: 100%; height: 100%; overflow: visible; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .sticker .o { stroke: var(--orange); stroke-width: 3.2; }
+  .sticker .f { fill: var(--orange); stroke: var(--ink); stroke-width: 1.8; }
+  .sticker .p { fill: var(--paper); stroke: var(--ink); stroke-width: 1.8; }
+  .sticker .k { stroke: var(--ink); stroke-width: 1.8; }
+  .sticker .spark { stroke: var(--ink); stroke-width: 2; opacity: 0; transform: scale(.4); transform-box: fill-box; transform-origin: center; transition: opacity .3s .25s, transform .4s .25s cubic-bezier(.3, 1.8, .5, 1); }
+  .svc.on .sticker .spark { opacity: 1; transform: scale(1); }
+  .svc.on .sticker { scale: 1; opacity: 1; animation: wiggle 2.8s ease-in-out .5s infinite; }
+  @keyframes wiggle { 0%, 100% { rotate: -8deg; } 50% { rotate: 6deg; } }
+
+  .svc-pill { position: absolute; top: calc(clamp(40px, 5.4vw, 84px) * .62); left: var(--px, 40px); width: max-content; max-width: min(340px, 80vw); background: var(--paper); border: 1.5px solid var(--orange); color: var(--orange); border-radius: 28px; padding: 12px 20px; font-size: 15px; font-weight: 600; line-height: 1.35; rotate: -4deg; opacity: 0; translate: 0 16px; transition: opacity .5s, translate .5s; }
+  .svc.on .svc-pill { opacity: 1; translate: 0 0; }
+  .svc-pill small { display: block; margin-top: 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); }
+  .svc-pill a { color: var(--ink); }
+
+  /* ================= STATS (charcoal band) ================= */
+  .stats { background: var(--ink); color: var(--paper); padding: clamp(56px, 7vw, 96px) 0; }
+  .stats .num { color: var(--orange); }
+  .stat-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .stat .num { font-size: clamp(64px, 8vw, 120px); line-height: .85; }
+  .stat p { margin-top: 10px; font-weight: 600; font-size: 15px; max-width: 22ch; }
+
+  /* ================= TESTIMONIALS (marquee before the CTA) ================= */
+  .love-head { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; padding: 0 var(--gutter); }
+  .love-head p { max-width: 46ch; font-size: clamp(17px, 1.6vw, 20px); font-weight: 500; color: var(--muted); }
+  /* two identical tracks slide left by their own width, so the loop never shows a seam */
+  .marquee { position: relative; display: flex; gap: var(--gap); overflow: hidden; padding: 8px 0; margin-top: clamp(40px, 6vw, 72px); --gap: 16px; --duration: 80s; }
+  .marquee-track { display: flex; flex-shrink: 0; gap: var(--gap); animation: marquee var(--duration) linear infinite; }
+  .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(calc(-100% - var(--gap))); } }
+  /* soft fades at each end, hidden on phones like the original */
+  .marquee::before, .marquee::after { content: ""; position: absolute; z-index: 1; top: 0; bottom: 0; width: 33%; pointer-events: none; }
+  .marquee::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+  .marquee::after { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+  .tcard { width: 320px; display: flex; flex-direction: column; gap: 16px; padding: 24px; border-radius: 14px; border-top: 1.5px solid rgba(250, 81, 14, .35); background: linear-gradient(to bottom, rgba(255, 248, 243, .95), rgba(255, 248, 243, .3)); color: inherit; text-decoration: none; text-align: left; transition: background .3s; }
+  .tcard:hover { background: linear-gradient(to bottom, var(--paper), rgba(249, 220, 204, .55)); }
+  .tcard .who { display: flex; align-items: center; gap: 12px; }
+  .tcard .av { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--peach); color: var(--orange); display: grid; place-items: center; font-weight: 700; }
+  .tcard strong { display: block; font-weight: 700; line-height: 1.2; }
+  .tcard .who div span { display: block; margin-top: 3px; font-size: 13px; line-height: 1.3; color: var(--muted); }
+  .tcard p { font-size: 15px; line-height: 1.55; color: var(--muted); }
+  @media (max-width: 640px) { .marquee::before, .marquee::after { display: none; } .tcard { width: 280px; } }
+  /* reduced motion: no sliding, scroll the row by hand instead */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { overflow-x: auto; scrollbar-width: none; }
+    .marquee-track { animation: none; }
+    .marquee-track + .marquee-track { display: none; }
+  }
+
+  /* ================= FAQ ================= */
+  .faq { max-width: 980px; margin: clamp(48px, 6vw, 80px) auto 0; text-align: left; }
+  .faq details { border-top: 1.5px solid var(--ink); }
+  .faq details:last-child { border-bottom: 1.5px solid var(--ink); }
+  .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 0; font-family: var(--display); font-variation-settings: "wdth" 85; font-weight: 700; font-size: clamp(22px, 2.4vw, 32px); line-height: 1.1; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary i { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-style: normal; font-size: 22px; transition: transform .25s, background .25s; }
+  .faq details[open] summary i { transform: rotate(45deg); background: var(--orange); }
+  .faq details p { padding: 0 64px 28px 0; font-size: 18px; max-width: 60ch; color: var(--muted); }
+
+  /* ================= ABOUT ================= */
+  .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+  .portrait-wrap { position: relative; width: 100%; max-width: 420px; }
+  .portrait-wrap::before { content: ""; position: absolute; inset: 8% -8% -6% 10%; background: var(--orange); border-radius: 50% 50% 28px 28px; z-index: 0; }
+  .portrait { position: relative; z-index: 1; aspect-ratio: 327 / 492; border-radius: 999px 999px 28px 28px; background: url(assets/jasmine-stage.jpg) 46% center / cover no-repeat; }
+  .portrait-wrap .tag { position: absolute; z-index: 2; }
+  .about { overflow-x: clip; }
+  .portrait-wrap .p1 { right: -6%; top: 58%; transform: rotate(6deg); }
+  .portrait-wrap .p2 { left: -6%; bottom: 14%; transform: rotate(-5deg); }
+  .about .h2 { font-size: clamp(48px, 7vw, 104px); }
+  .about .h2 em { font-style: normal; color: var(--orange); }
+  .about p { font-size: 19px; margin-top: 20px; max-width: 52ch; }
+
+  /* ================= FOOTER ================= */
+  footer.end { background: #0E0C0B; color: var(--paper); padding: clamp(80px, 10vw, 140px) 0 32px; overflow: hidden; }
+  footer.end h2 { font-size: clamp(60px, 12vw, 200px); }
+  footer.end h2 em { font-style: normal; color: var(--orange); }
+  .end-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; margin-top: 40px; }
+  .end-row .talk { background: var(--orange); color: var(--ink); }
+  .end-row .talk i { background: var(--ink); color: var(--paper); }
+  .end-row .navpill { color: var(--ink); }
+  .end-row .navpill:hover { background: var(--orange); color: var(--ink); }
+  .end-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: clamp(64px, 8vw, 112px); padding-top: 28px; border-top: 1.5px solid rgba(255, 248, 243, .2); }
+  .end-cols h4 { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; color: var(--orange); }
+  .end-cols a, .end-cols p { display: block; font-size: 18px; font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+  .end-cols a:hover { text-decoration: underline; }
+  .fine { margin-top: 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 600; color: rgba(255, 248, 243, .6); }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 1024px) {
+    /* phones and tablets: the narrow route, titles stack word / sticker / word */
+    .flow { aspect-ratio: 400 / 1500; max-width: 520px; margin: 0 auto; }
+    .flow .route-d { display: none; }
+    .flow .route-m { display: block; }
+    .svc { left: var(--mx); top: var(--my); }
+    .svc h3 { grid-template-columns: 1fr; justify-items: center; gap: 8px; width: min(92vw, 640px); text-align: center; font-size: clamp(40px, 12vw, 56px); }
+    .svc h3 span:first-child, .svc h3 span:last-child { justify-self: center; }
+    /* the route runs vertically here, so the words get a cream backing and the line passes behind them */
+    .svc h3 span { background: var(--cream); padding: .04em .14em 0; border-radius: 6px; }
+    .svc-pill { top: calc(clamp(40px, 12vw, 56px) * .9 + 52px); left: 0; translate: -50% 16px; text-align: center; }
+    .svc.on .svc-pill { translate: -50% 0; }
+    .hours { display: none; }
+    .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .portrait-wrap { max-width: 340px; margin: 0 auto; }
+    /* hero stacks: video, call button */
+    .hero-body { grid-template-columns: 1fr; justify-items: center; text-align: center; margin-top: 28px; }
+    .hero-right { padding-bottom: 0; align-items: center; text-align: center; }
+    .hero-video, .hero-right { grid-column: auto; }
+    .hero-video { max-width: 420px; }
+    .hero-right { order: 3; padding-bottom: clamp(100px, 18vw, 160px); }
+  }
+  @media (max-width: 760px) {
+    header.top { grid-template-columns: 1fr auto; }
+    .top-left { display: none; }
+    .logo { font-size: 20px; }
+    .hero-video { max-width: 320px; }
+    /* phones: the pills drop out of the headline into a tilted row beneath it */
+    .hero .tag { position: static; display: inline-block; margin: 14px 3px 0; }
+    .loop { width: 150px; }
+    .loop.l { left: -80px; top: 64px; }
+    .loop.r { right: -70px; top: 150px; }
+    .portrait-wrap .p1 { right: 0; }
+    .portrait-wrap .p2 { left: 0; }
+    .statement .tag { position: static; display: inline-block; margin: 0 4px 24px; transform: rotate(-3deg); }
+    .work-head, .services-head { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .work-head .seeall { justify-self: center; }
+
+    .faq details p { padding-right: 0; }
+    .end-cols { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-left">
+    <a class="navpill" href="#work">Work</a>
+    <a class="navpill" href="#about">About</a>
+  </div>
+  <a href="#" class="logo">That Canva Girl</a>
+  <div class="top-right">
+    <span class="hours">New tips Mon–Fri<br>6:30am EAT</span>
+    <a class="talk" href="https://nestuge.com/linkedin-strategy-calls" target="_blank" rel="noopener">Book a call <i aria-hidden="true">↗</i></a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <svg class="loop l" viewBox="0 0 400 400" aria-hidden="true"><path d="M60 340 C 10 220, 90 60, 220 70 C 350 80, 380 230, 270 290 C 170 345, 110 240, 190 190 C 280 135, 360 210, 390 300"/></svg>
+  <svg class="loop r" viewBox="0 0 400 400" aria-hidden="true"><path d="M40 60 C 150 10, 330 60, 330 190 C 330 320, 170 360, 120 270 C 80 195, 180 140, 250 200 C 320 260, 290 360, 210 390"/></svg>
+
+  <div class="wrap hero-head">
+    <h1 class="display"><span>LinkedIn</span><span>Strategy &amp;</span><span>Design with me</span></h1>
+    <span class="tag t1">That Canva Girl</span>
+    <span class="tag t2">#1 Branding on LinkedIn, Kenya</span>
+    <span class="tag t3">No boring banners</span>
+  </div>
+
+  <div class="wrap hero-body">
+    <video class="hero-video" src="assets/hero.mp4" autoplay muted loop playsinline preload="auto" aria-label="That Canva Girl hero animation"></video>
+    <div class="hero-right">
+      <a class="talk big" href="https://nestuge.com/linkedin-strategy-calls" target="_blank" rel="noopener">Book a strategy call <i aria-hidden="true">↗</i></a>
+      <small>Based in Kenya, working with people everywhere.</small>
+    </div>
+  </div>
+
+  <svg class="ticker" id="ticker" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path id="arc" class="band" d="M -200 190 Q 720 10 1640 150"/>
+    <text dy="15"><textPath href="#arc" id="tickerText">Get positioned • Get seen • Get paid • Strategy + design • Get positioned • Get seen • Get paid • Strategy + design • Get positioned • Get seen • Get paid • Strategy + design • </textPath></text>
+  </svg>
+</section>
+
+<!-- ================= STATEMENT ================= -->
+<section class="statement section center">
+  <div class="wrap">
+    <span class="label">The short version</span>
+    <span class="tag orange s1">Canva is my playground</span>
+    <p id="statement">Most people only do half of LinkedIn. Great visuals with zero strategy, or solid strategy with a lunch-break brand. I do <span data-hot>both halves</span>, so you get followed, trusted and paid.</p>
+    <span class="tag s2">Strategy nerd, too</span>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="work section" id="work" aria-label="Selected work">
+  <div class="wrap work-head">
+    <span class="label">Featured projects</span>
+    <h2 class="h2 display">Selected work</h2>
+    <a class="talk seeall" href="https://www.behance.net/gathogajazmine" target="_blank" rel="noopener">See it all on Behance <i aria-hidden="true">↗</i></a>
+  </div>
+  <!-- Images hot-linked from Behance for the draft; download into /assets before launch -->
+  <div class="curve" id="curve"></div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <span class="label">My services</span>
+      <h2 class="h2 display">This is my thing</h2>
+      <span></span>
+    </div>
+    <div class="flow" id="flow">
+      <svg class="route route-d" viewBox="0 0 1600 2250" preserveAspectRatio="none" aria-hidden="true">
+        <path class="ghost" d="M 1660 90 C 1380 105 1170 255 1130 495 C 1100 675 1030 840 1090 915 C 1150 990 1220 870 1150 795 C 1060 705 900 900 760 960 C 600 1035 420 975 430 1170 C 440 1350 520 1470 600 1425 C 670 1380 640 1260 570 1290 C 490 1335 560 1560 760 1620 C 940 1680 1060 1665 1050 1845 C 1040 2040 760 2145 -60 2205"/>
+        <path class="ink" d="M 1660 90 C 1380 105 1170 255 1130 495 C 1100 675 1030 840 1090 915 C 1150 990 1220 870 1150 795 C 1060 705 900 900 760 960 C 600 1035 420 975 430 1170 C 440 1350 520 1470 600 1425 C 670 1380 640 1260 570 1290 C 490 1335 560 1560 760 1620 C 940 1680 1060 1665 1050 1845 C 1040 2040 760 2145 -60 2205"/>
+        <circle class="cap" cx="1590" cy="96" r="20"/>
+        <circle class="nib" r="12"/>
+      </svg>
+      <svg class="route route-m" viewBox="0 0 400 1500" preserveAspectRatio="none" aria-hidden="true">
+        <path class="ghost" d="M 430 20 C 300 30 140 90 160 170 C 175 230 200 230 200 260 C 200 330 250 400 300 410 C 360 420 360 350 310 350 C 240 350 60 460 60 560 C 60 660 200 680 200 760 C 200 840 120 880 110 940 C 100 1010 180 1010 180 960 C 180 900 60 960 120 1060 C 160 1130 200 1180 200 1260 C 200 1360 100 1420 -30 1480"/>
+        <path class="ink" d="M 430 20 C 300 30 140 90 160 170 C 175 230 200 230 200 260 C 200 330 250 400 300 410 C 360 420 360 350 310 350 C 240 350 60 460 60 560 C 60 660 200 680 200 760 C 200 840 120 880 110 940 C 100 1010 180 1010 180 960 C 180 900 60 960 120 1060 C 160 1130 200 1180 200 1260 C 200 1360 100 1420 -30 1480"/>
+        <circle class="cap" cx="390" cy="22" r="12"/>
+        <circle class="nib" r="8"/>
+      </svg>
+
+      <article class="svc" data-at="1130,495" data-at-m="200,260" style="--x:70.625%; --y:22%; --mx:50%; --my:17.33%; --px:-380px">
+        <h3 class="display"><span>LinkedIn</span>
+          <i class="sticker" aria-hidden="true"><svg viewBox="0 0 48 48"><circle class="f" cx="22" cy="26" r="16"/><path class="p" d="M22 14a12 12 0 1 1-11.5 15.5"/><circle class="o" cx="22" cy="26" r="6" style="stroke:var(--paper)"/><circle class="k" cx="22" cy="26" r="2"/><path class="k" d="M22 26 40 8"/><path class="p" d="M36 6l6-2-2 6-5 1z"/><path class="spark" d="M4 10l-3-3M8 4 7 0M44 8l3-3M46 40l3 2M3 40l-3 2"/></svg></i>
+          <span>Strategy</span></h3>
+        <p class="svc-pill">A 1 on 1 call on how to grow, position yourself and attract clients on LinkedIn. <small><a href="https://nestuge.com/linkedin-strategy-calls" target="_blank" rel="noopener">Book a strategy call →</a></small></p>
+      </article>
+
+      <article class="svc" data-at="430,1170" data-at-m="200,760" style="--x:26.875%; --y:52%; --mx:50%; --my:50.67%; --px:40px">
+        <h3 class="display"><span>Profile</span>
+          <i class="sticker" aria-hidden="true"><svg viewBox="0 0 48 48"><path class="o" d="M6 40c5-6 9 3 14-3s8 2 12-2"/><path class="f" d="M30 6l10 10-18 18-12 2 2-12z"/><path class="p" d="M12 24l10 10-12 2z"/><path class="k" d="M26 10l10 10"/><path class="spark" d="M4 10l-3-3M8 4 7 0M44 8l3-3M46 40l3 2M3 40l-3 2"/></svg></i>
+          <span>Design</span></h3>
+        <p class="svc-pill">Profiles, banners, carousels and flyers, built in Canva to convert, not just look cute. <small>100+ profiles designed</small></p>
+      </article>
+
+      <article class="svc" data-at="1050,1845" data-at-m="200,1260" style="--x:65.625%; --y:82%; --mx:50%; --my:84%; --px:-400px">
+        <h3 class="display"><span>Weekday</span>
+          <i class="sticker" aria-hidden="true"><svg viewBox="0 0 48 48"><path class="f" d="M6 10c0-3 2-5 5-5h26c3 0 5 2 5 5v16c0 3-2 5-5 5H20l-9 8v-8c-3 0-5-2-5-5z"/><circle class="p" cx="16" cy="18" r="2.6"/><circle class="p" cx="24" cy="18" r="2.6"/><circle class="p" cx="32" cy="18" r="2.6"/><path class="spark" d="M4 10l-3-3M8 4 7 0M44 8l3-3M46 40l3 2M3 40l-3 2"/></svg></i>
+          <span>Content</span></h3>
+        <p class="svc-pill">Free strategy and design tips, plus lots of fun stories. <small>6:30am EAT, Monday to Friday</small></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats" aria-label="Results">
+  <div class="wrap stat-row">
+    <div class="stat"><div class="num display">#1</div><p>Branding &amp; Positioning on LinkedIn in Kenya</p></div>
+    <div class="stat"><div class="num display">#40</div><p>Branding &amp; Positioning on LinkedIn worldwide</p></div>
+    <div class="stat"><div class="num display">100+</div><p>LinkedIn profiles designed for creators &amp; founders</p></div>
+    <div class="stat"><div class="num display">99%</div><p>Client satisfaction across ~150 design projects</p></div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section center">
+  <div class="wrap">
+    <span class="label">Frequently asked questions</span>
+    <h2 class="h2 display" style="margin-top:16px">Things you<br>might ask</h2>
+    <div class="faq">
+      <details>
+        <summary>Do I need strategy or design? <i aria-hidden="true">+</i></summary>
+        <p>Usually both. Great visuals with no positioning don’t get seen, and a solid strategy with a thrown-together brand doesn’t get trusted. A strategy call is the best place to start; we’ll work out what’s missing.</p>
+      </details>
+      <details>
+        <summary>What do I get with a profile makeover? <i aria-hidden="true">+</i></summary>
+        <p>Your LinkedIn profile optimised and designed: banner, featured section, carousels and flyers, all built in Canva so you can keep using them.</p>
+      </details>
+      <details>
+        <summary>Why Canva? <i aria-hidden="true">+</i></summary>
+        <p>Because you can edit it yourself afterwards. Canva has always been my playground, and Figma comes out when a project needs it.</p>
+      </details>
+      <details>
+        <summary>Do you work with people outside Kenya? <i aria-hidden="true">+</i></summary>
+        <p>Yes. I’m based in Kenya and work with consultants, founders and creators wherever they are.</p>
+      </details>
+      <details>
+        <summary>Not ready to hire anyone yet? <i aria-hidden="true">+</i></summary>
+        <p>Follow along on LinkedIn. I share free strategy and design tips every weekday at 6:30am EAT.</p>
+      </details>
+      <details>
+        <summary>How do I get started? <i aria-hidden="true">+</i></summary>
+        <p><a href="https://nestuge.com/linkedin-strategy-calls" target="_blank" rel="noopener">Book a strategy call</a>, or DM me “STRATEGY” on LinkedIn. Ask me anything, anytime.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about section" id="about" style="padding-top:0">
+  <div class="wrap about-grid">
+    <div class="portrait-wrap">
+      <div class="portrait" role="img" aria-label="Jasmine on stage with a microphone, wearing a Canva cap and Canva Community Labs lanyard"></div>
+      <span class="tag orange p1">Hi, I’m Jazz</span>
+      <span class="tag p2">Kenya</span>
+    </div>
+    <div>
+      <span class="label">About me</span>
+      <h2 class="h2 display" style="margin-top:16px">Most people know me as <em>That Canva Girl</em></h2>
+      <p>Canva has always been my playground. But somewhere between working on 100+ profiles I realised the ones growing and getting clients weren’t always the ones with the best designs. They were the ones who understood the game.</p>
+      <p>So I learned that too: positioning, engagement, content, all of it. Now I help consultants and service providers get strategically and visually positioned.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="section" id="love" aria-label="Testimonials">
+  <div class="love-head">
+    <span class="label">Testimonials</span>
+    <h2 class="h2 display">Apparently,<br>it works</h2>
+    <p>What clients wrote about working with Jasmine, straight from her LinkedIn recommendations.</p>
+    <a class="talk" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">Read them all on LinkedIn <i aria-hidden="true">↗</i></a>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">IO</span><div><strong>Ishioma Olise</strong><span>Executive Assistant to Founders</span></div></div>
+        <p>“When Jasmine sent me the final files, I actually cried. I know that sounds dramatic, but I’m not exaggerating. It was everything I wanted.”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">RA</span><div><strong>Richel Ohenewaa Attafuah</strong><span>Machine Learning Engineer</span></div></div>
+        <p>“What makes her stand out is not just her creativity but her strategy. Every visual she created was purposeful.”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">FC</span><div><strong>Favour Commander</strong><span>Operations &amp; Automation Specialist</span></div></div>
+        <p>“This is more than a glow-up, it’s a whole facelift. She gave me various samples that I couldn’t even decide on what to use because it was so good.”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">EK</span><div><strong>Esther Kaingi</strong><span>Procurement &amp; Supply Chain Specialist</span></div></div>
+        <p>“She not only designed an attention-grabbing banner but also created beautiful templates for my featured section. Now, my profile clearly positions me and communicates what I do.”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">AK</span><div><strong>Angora Kader Atchian</strong><span>Business English Coach &amp; Interpreter</span></div></div>
+        <p>“Jasmine helped transform my ideas into a powerful and coherent visual identity, from banners to layout structure and messaging tone.”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">EN</span><div><strong>Esther Chinonso Nwabueze</strong><span>Content &amp; Technical Writer</span></div></div>
+        <p>“Jasmine has a way of bringing warmth into her designs. The kind that doesn’t just look good, but makes you feel something.”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">SO</span><div><strong>Susana Onyowoicho Otokpa</strong><span>Career Coach &amp; Keynote Speaker</span></div></div>
+        <p>“When I reached out to her, she was a bit booked, but I told myself it’s going to be worth the wait. And it sure was.”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">EP</span><div><strong>Ekemini Peter</strong><span>Designer, Design with Jazz cohort</span></div></div>
+        <p>“As a designer, I attended her 2nd cohort on Design with Jazz and my goodness, Jasmine over delivered.”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">OD</span><div><strong>Osagie Mary Doo</strong><span>AI Strategist &amp; Trainer</span></div></div>
+        <p>“Talk about a designer who knows her onions? Jasmine! Talk about community and genuine support? Jasmine!”</p>
+      </a>
+      <a class="tcard" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">PN</span><div><strong>Perfect Nkani</strong><span>LinkedIn client</span></div></div>
+        <p>“She transformed my brand image into one that positioned me as an authority and gets results.”</p>
+      </a>
+    </div>
+    <div class="marquee-track" aria-hidden="true">
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">IO</span><div><strong>Ishioma Olise</strong><span>Executive Assistant to Founders</span></div></div>
+        <p>“When Jasmine sent me the final files, I actually cried. I know that sounds dramatic, but I’m not exaggerating. It was everything I wanted.”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">RA</span><div><strong>Richel Ohenewaa Attafuah</strong><span>Machine Learning Engineer</span></div></div>
+        <p>“What makes her stand out is not just her creativity but her strategy. Every visual she created was purposeful.”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">FC</span><div><strong>Favour Commander</strong><span>Operations &amp; Automation Specialist</span></div></div>
+        <p>“This is more than a glow-up, it’s a whole facelift. She gave me various samples that I couldn’t even decide on what to use because it was so good.”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">EK</span><div><strong>Esther Kaingi</strong><span>Procurement &amp; Supply Chain Specialist</span></div></div>
+        <p>“She not only designed an attention-grabbing banner but also created beautiful templates for my featured section. Now, my profile clearly positions me and communicates what I do.”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">AK</span><div><strong>Angora Kader Atchian</strong><span>Business English Coach &amp; Interpreter</span></div></div>
+        <p>“Jasmine helped transform my ideas into a powerful and coherent visual identity, from banners to layout structure and messaging tone.”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">EN</span><div><strong>Esther Chinonso Nwabueze</strong><span>Content &amp; Technical Writer</span></div></div>
+        <p>“Jasmine has a way of bringing warmth into her designs. The kind that doesn’t just look good, but makes you feel something.”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">SO</span><div><strong>Susana Onyowoicho Otokpa</strong><span>Career Coach &amp; Keynote Speaker</span></div></div>
+        <p>“When I reached out to her, she was a bit booked, but I told myself it’s going to be worth the wait. And it sure was.”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">EP</span><div><strong>Ekemini Peter</strong><span>Designer, Design with Jazz cohort</span></div></div>
+        <p>“As a designer, I attended her 2nd cohort on Design with Jazz and my goodness, Jasmine over delivered.”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">OD</span><div><strong>Osagie Mary Doo</strong><span>AI Strategist &amp; Trainer</span></div></div>
+        <p>“Talk about a designer who knows her onions? Jasmine! Talk about community and genuine support? Jasmine!”</p>
+      </a>
+      <a class="tcard" tabindex="-1" href="https://www.linkedin.com/in/jasminegathoga/details/recommendations/" target="_blank" rel="noopener">
+        <div class="who"><span class="av" aria-hidden="true">PN</span><div><strong>Perfect Nkani</strong><span>LinkedIn client</span></div></div>
+        <p>“She transformed my brand image into one that positioned me as an authority and gets results.”</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="end" id="contact">
+  <div class="wrap">
+    <h2 class="display">Okay, that’s<br><em>enough scrolling</em></h2>
+    <div class="end-row">
+      <a class="talk big" href="https://nestuge.com/linkedin-strategy-calls" target="_blank" rel="noopener">Book a strategy call <i aria-hidden="true">↗</i></a>
+      <a class="navpill" href="https://www.linkedin.com/in/jasminegathoga" target="_blank" rel="noopener">Or DM “STRATEGY” on LinkedIn</a>
+    </div>
+    <div class="end-cols">
+      <div><h4>Email</h4><a href="mailto:jasminegathogadesigns@gmail.com">jasminegathogadesigns@gmail.com</a></div>
+      <div><h4>Find me</h4><a href="https://www.linkedin.com/in/jasminegathoga" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.behance.net/gathogajazmine" target="_blank" rel="noopener">Behance</a></div>
+      <div><h4>Free tips</h4><p>Every weekday, 6:30am EAT</p></div>
+    </div>
+    <div class="fine"><span>© 2026 Jasmine Gathoga · That Canva Girl</span><span>Made in Canva’s spirit, coded by hand.</span></div>
+  </div>
+</footer>
+
+<script>
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+
+const topBar = document.querySelector("header.top")
+const markScrolled = () => topBar.classList.toggle("scrolled", window.scrollY > 40)
+window.addEventListener("scroll", markScrolled, { passive: true })
+markScrolled()
+
+/* ---------- Hero video: hold the first frame for reduced-motion visitors ---------- */
+;(() => {
+  const v = document.querySelector(".hero-video")
+  if (!v) return
+  // no file yet: drop the empty slot rather than leave a gap in the hero
+  const hide = () => { v.hidden = true }
+  if (v.error) hide()
+  v.addEventListener("error", hide)
+  const sync = () => { if (reduceMotion.matches) { v.pause(); v.currentTime = 0 } else v.play().catch(() => {}) }
+  reduceMotion.addEventListener("change", sync)
+  sync()
+})()
+
+/* ---------- Curved ticker: slide the text along the arc ---------- */
+;(() => {
+  const tp = document.getElementById("tickerText")
+  if (reduceMotion.matches || !tp) return
+  // the phrase set repeats three times; slide one set's length, then wrap
+  let cycle = 0, offset = 0, last = 0
+  const measure = () => { cycle = tp.getComputedTextLength() / 3 }
+  const step = (now) => {
+    const dt = last ? (now - last) / 1000 : 0
+    last = now
+    if (!cycle) measure()
+    offset -= dt * 70
+    if (cycle && offset <= -cycle) offset += cycle
+    tp.setAttribute("startOffset", offset.toFixed(1))
+    requestAnimationFrame(step)
+  }
+  document.fonts.ready.then(measure)
+  requestAnimationFrame(step)
+})()
+
+/* ---------- Statement: words fill in as the paragraph scrolls through view ---------- */
+;(() => {
+  const p = document.getElementById("statement")
+  const words = []
+  const split = (node, hot) => {
+    for (const child of [...node.childNodes]) {
+      if (child.nodeType === 3) {
+        const frag = document.createDocumentFragment()
+        child.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return }
+          const s = document.createElement("span")
+          s.className = "w" + (hot ? " hot" : "")
+          s.textContent = part
+          words.push(s)
+          frag.appendChild(s)
+        })
+        child.replaceWith(frag)
+      } else split(child, hot || child.hasAttribute("data-hot"))
+    }
+  }
+  split(p, false)
+  const update = () => {
+    const r = p.getBoundingClientRect()
+    const vh = window.innerHeight
+    const progress = reduceMotion.matches ? 1 : Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)))
+    const lit = Math.round(progress * words.length)
+    words.forEach((w, i) => w.classList.toggle("on", i < lit))
+  }
+  window.addEventListener("scroll", update, { passive: true })
+  window.addEventListener("resize", update)
+  update()
+})()
+
+/* ---------- Curved row: vanilla port of TiltedGridHero (21st.dev) ----------
+   One row of tiles streams right to left round the inside of a cylinder: flat in the
+   middle, bending toward you at the ends, fading out at the edges. A box can't bend, so
+   each tile is cut into vertical strips, each turned a few degrees round the cylinder's
+   axis; the tile itself is the only thing that animates. JS only sizes the loop and hands
+   a tile its next image each time it wraps, out of sight. */
+const B = "https://mir-s3-cdn-cf.behance.net/project_modules/1400/"
+const workImages = [
+  { src: B + "6fb935189926025.65ba411f0dabd.png", alt: "A & J wedding website" },
+  { src: B + "449477189926025.65ba411f09647.png", alt: "Jepecia company profile" },
+  { src: B + "c470dc189926025.65ba411f19a68.png", alt: "Afterklasses carousels" },
+  { src: B + "8b1ee6189926025.65ba411f1c7d0.png", alt: "Social media posts" },
+  { src: B + "2c4e94189926025.65ba411f12cf4.png", alt: "Event design" },
+  { src: B + "3b0c72189926025.65ba411f16ab9.png", alt: "Layout and print design" },
+  { src: B + "cf48bc189926025.65ba411f18888.png", alt: "Marketing design" },
+  { src: B + "26d495189926025.65ba411f1787a.png", alt: "Social media design" },
+  { src: B + "41415e189926025.65ba411f0eb5b.png", alt: "Event design" },
+  { src: B + "6373f7189926025.65ba411f0ba1c.png", alt: "Layout and print design" },
+]
+function curvedRow(host, images, { speed = 4, tileHeight = 34, aspect = 16 / 9, gap = 6, axis = 50, curve = 80, fade = 10 } = {}) {
+  const SLICES = 16   // strips per tile; fewer starts to show corners on the edges
+  const CAMERA = 1.6  // camera distance as a multiple of the radius
+  const MAX_WIDTH = 55 // a tile never takes more than this % of the width
+  const bend = (Math.min(85, Math.max(5, curve)) * Math.PI) / 180
+  // radius (share of width) that puts the frame's edge `bend` radians round the arc
+  const arc = (CAMERA - 1 + Math.cos(bend)) / (2 * CAMERA * Math.sin(bend))
+  const deg = (rad) => (rad * 180) / Math.PI
+  const round = (n) => +n.toFixed(4)
+  const id = "cr" + Math.random().toString(36).slice(2, 8)
+  const r = 100 * arc
+  const radius = `${+r.toFixed(3)}cqw`
+  const u = (n) => `calc(${round(n)} * min(${tileHeight}cqh, ${round(MAX_WIDTH / aspect)}cqw))`
+  // out to the axis, round it, back in: a box sits on the cylinder at that angle
+  const turn = (d) => `translateZ(${radius}) rotateY(${round(d)}deg) translateZ(-${radius})`
+  const share = aspect / SLICES
+
+  const measure = (width, height) => {
+    const h = Math.min((tileHeight / 100) * height, ((MAX_WIDTH / 100) * width) / aspect)
+    const rad = width * arc
+    if (!(h > 0) || !(rad > 0)) return { columns: 2, sweep: 0, unit: 0, limit: 0 }
+    const unit = deg(h / rad)
+    const pitch = (aspect + gap / 100) * unit
+    const limit = deg(bend) + (aspect * unit) / 2
+    const columns = Math.min(60, Math.max(2, Math.ceil((2 * limit) / pitch)))
+    const sweep = round((columns * pitch) / 2)
+    return { columns, sweep, unit: round(unit), limit: round(Math.min(sweep, limit)) }
+  }
+
+  const style = document.createElement("style")
+  const band = document.createElement("div")
+  band.className = "curve-band"
+  band.setAttribute("aria-hidden", "true")
+  band.style.perspective = `${+(r * CAMERA).toFixed(3)}cqw`
+  band.style.perspectiveOrigin = `50% ${axis}%`
+  const mask = `linear-gradient(90deg, transparent, #000 ${fade}%, #000 ${100 - fade}%, transparent)`
+  band.style.maskImage = band.style.webkitMaskImage = mask
+  host.append(style, band)
+  for (const { src } of images) new Image().src = src
+
+  let layout = null
+  const build = (L) => {
+    const { columns, sweep, unit, limit } = L
+    const duration = columns * speed
+    // beyond `limit` a tile is wholly off-screen, so it wraps (and swaps image) hidden
+    const hide = round(((sweep - limit) / (2 * sweep || 1)) * 100)
+    style.textContent =
+      `@keyframes ${id}{from{transform:${turn(-sweep)}}to{transform:${turn(sweep)}}` +
+      `0%,${hide}%,${100 - hide}%,100%{visibility:hidden}` +
+      `${hide + 0.001}%,${100 - hide - 0.001}%{visibility:visible}}`
+    band.textContent = ""
+    for (let t = 0; t < columns; t++) {
+      const first = columns - 1 - t // order the tiles come on
+      const tile = document.createElement("div")
+      tile.className = "curve-tile"
+      Object.assign(tile.style, {
+        left: `calc(50% - ${u(aspect / 2)})`, top: `calc(${axis}% - ${u(0.5)})`,
+        width: u(aspect), height: u(1),
+        animation: `${id} ${duration}s linear ${-t * speed}s infinite`,
+      })
+      const imgs = []
+      for (let k = 0; k < SLICES; k++) {
+        const slice = document.createElement("div")
+        slice.className = "curve-slice" + (k === 0 ? " first" : k === SLICES - 1 ? " last" : "")
+        Object.assign(slice.style, {
+          left: u((aspect - share) / 2),
+          // a pixel wider than its share so no hairline opens between facets
+          width: k === SLICES - 1 ? u(share) : `calc(${u(share)} + 1px)`,
+          height: u(1),
+          transform: turn((aspect / 2 - (k + 0.5) * share) * unit),
+        })
+        const img = document.createElement("img")
+        img.alt = ""; img.draggable = false; img.decoding = "async"
+        Object.assign(img.style, { left: u(-k * share), width: u(aspect), height: u(1) })
+        slice.appendChild(img); imgs.push(img)
+        tile.appendChild(slice)
+      }
+      const show = (n) => { const src = images[n % images.length].src; imgs.forEach((i) => { if (i.src !== src) i.src = src }) }
+      show(first)
+      tile.addEventListener("animationiteration", (e) => {
+        const lap = Math.round(e.elapsedTime / duration)
+        show(lap * columns + first)
+      })
+      band.appendChild(tile)
+    }
+    band.classList.add("ready")
+  }
+  new ResizeObserver(([entry]) => {
+    const { width, height } = entry.contentRect
+    const next = measure(width, height)
+    if (layout && layout.columns === next.columns && layout.sweep === next.sweep && layout.unit === next.unit) return
+    layout = next
+    build(next)
+  }).observe(host)
+}
+curvedRow(document.getElementById("curve"), workImages)
+/* ---------- Services route: the orange line draws itself as the section scrolls past ---------- */
+;(() => {
+  const flow = document.getElementById("flow")
+  if (!flow) return
+  const svcs = [...flow.querySelectorAll(".svc")]
+  let route = null, ink = null, nib = null, total = 0, stops = []
+
+  // length along the path closest to a point, by sampling
+  const lengthAt = (p, x, y) => {
+    const len = p.getTotalLength()
+    let best = 0, bestD = Infinity
+    for (let l = 0; l <= len; l += 4) {
+      const pt = p.getPointAtLength(l)
+      const d = (pt.x - x) ** 2 + (pt.y - y) ** 2
+      if (d < bestD) { bestD = d; best = l }
+    }
+    return best
+  }
+
+  const setup = () => {
+    const mobile = getComputedStyle(flow.querySelector(".route-m")).display !== "none"
+    route = flow.querySelector(mobile ? ".route-m" : ".route-d")
+    ink = route.querySelector(".ink")
+    nib = route.querySelector(".nib")
+    total = ink.getTotalLength()
+    ink.style.strokeDasharray = `${total} ${total}`
+    stops = svcs.map((s) => {
+      const [x, y] = s.dataset[mobile ? "atM" : "at"].split(",").map(Number)
+      return lengthAt(ink, x, y)
+    })
+    update()
+  }
+
+  const update = () => {
+    if (!ink) return
+    const r = flow.getBoundingClientRect()
+    const vh = window.innerHeight
+    // starts as the section's top enters the lower part of the screen, ends as its bottom passes the middle
+    const progress = reduceMotion.matches ? 1 : Math.min(1, Math.max(0, (vh * 0.7 - r.top) / (r.height - vh * 0.1)))
+    const drawn = progress * total
+    ink.style.strokeDashoffset = String(total - drawn)
+    const pt = ink.getPointAtLength(Math.max(drawn, 0.1))
+    nib.setAttribute("cx", pt.x.toFixed(1))
+    nib.setAttribute("cy", pt.y.toFixed(1))
+    nib.style.opacity = progress > 0.001 && progress < 0.999 ? "1" : "0"
+    svcs.forEach((s, i) => s.classList.toggle("on", drawn >= stops[i] - 2))
+  }
+
+  window.addEventListener("scroll", update, { passive: true })
+  let rt
+  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(setup, 150) })
+  setup()
+})()
+</script>
+</body>
+</html>
